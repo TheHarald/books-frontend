@@ -2,10 +2,16 @@
 
 [Хостинг на firebase](https://books-test-task.web.app)
 
-### Установка и запуск
+### Запуск в докер контейнере
+```
+docker-compose up -d
+```
+Приложение будет доступно на http://localhost:3000/
+
+### Запуск на локальной машине
 Склонировать репозиторий
 ```
-    git clone https://github.com/TheHarald/books-frontend
+git clone https://github.com/TheHarald/books-frontend
 ```
 Войти в папку с проектом
 ```
@@ -20,7 +26,7 @@ npm i
 npm run start
 ```
 
-### Запуск в докер контейнере
-```
-docker-compose up -d
-```
+Приложение будет доступно на http://localhost:3000/
+
+
+

@@ -43,7 +43,6 @@ function MainPage(props: MainPageProps) {
 
     function handleLoadMore() {
         dispatch(increaseStartIndex())
-        console.log('load');
     }
     return (
         <StyledMainPage>

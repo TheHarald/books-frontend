@@ -2,8 +2,7 @@ import React, { useRef } from 'react';
 import { useDispatch } from 'react-redux';
 import styled from 'styled-components';
 import { booksApiSlice } from '../../redux/slices/books/booksApi';
-// import { useAppDispatch } from '../../hooks/hooks';
-import searchParamsSlice, { resetSearchParams, setCategory, setSearchFild, setSortBy } from '../../redux/slices/searchParams/searchParamsSlice';
+import { resetSearchParams, setCategory, setSearchFild, setSortBy } from '../../redux/slices/searchParams/searchParamsSlice';
 import Button from '../Button/Button';
 import SearchBar from '../SearchBar/SearchBar';
 import Select from '../Select/Select';
@@ -86,7 +85,7 @@ function Header(props: HeaderProps) {
             </StyledSearchContainer>
             <StyledSelectContainer>
                 <Select onChange={handleCategory} options={['all', 'art', 'biography', 'computers', 'history', 'medical', 'poetry']} label='Categories' />
-                <Select onChange={handleSortBy} options={['relevance ', 'newest']} label='Sorting by' />
+                <Select onChange={handleSortBy} options={['relevance', 'newest']} label='Sorting by' />
             </StyledSelectContainer>
         </StyledHeader>
     );
