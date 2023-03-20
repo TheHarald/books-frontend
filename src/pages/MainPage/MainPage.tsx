@@ -37,14 +37,12 @@ function MainPage(props: MainPageProps) {
 
     const requestParams: BookRequestParams = useSelector(searchParamsSelector)
 
-
     const { data, isLoading, error } = useGetBooksQuery(requestParams)
 
     const dispatch = useDispatch()
 
     function handleLoadMore() {
         dispatch(increaseStartIndex())
-        window.scrollTo(0, 0)
     }
     return (
         <StyledMainPage>

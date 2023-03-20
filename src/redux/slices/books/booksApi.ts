@@ -9,15 +9,10 @@ export const booksApiSlice = createApi({
         baseUrl: 'https://www.googleapis.com/books/v1/volumes'
     }),
     endpoints: (builder) => ({
-        getBooks: builder.query<BooksResponse, BookRequestParams>({
-            query: ({ category, searchFild, sortBy, maxResults, startIndex }) =>
-                `?q=${searchFild}:${category}&orderBy=${sortBy}&maxResults=${maxResults}&startIndex=${startIndex}&key=${process.env.REACT_APP_API_KEY}`,
-
-        }),
         getBookById: builder.query<Book, string>({
-            query: (bookId) => `/${bookId}`
+            query: (bookId) => `/${bookId}?key=${process.env.REACT_APP_API_KEY}`
         }),
-        getMoreBooks: builder.query<BooksResponse, BookRequestParams>({
+        getBooks: builder.query<BooksResponse, BookRequestParams>({
             query: ({ category, searchFild, sortBy, maxResults, startIndex }) =>
                 `?q=${searchFild}:${category}&orderBy=${sortBy}&maxResults=${maxResults}&startIndex=${startIndex}&key=${process.env.REACT_APP_API_KEY}`,
             serializeQueryArgs: ({ endpointName }) => {
@@ -37,4 +32,4 @@ export const booksApiSlice = createApi({
 })
 
 
-export const { useGetBooksQuery, useGetBookByIdQuery, useGetMoreBooksQuery } = booksApiSlice;
+export const { useGetBooksQuery, useGetBookByIdQuery } = booksApiSlice;

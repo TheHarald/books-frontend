@@ -8,7 +8,7 @@ import Header from "./Header"
 describe('Тесты для компонента Header', () => {
 
     it('поисковая строка должна сохранять ввод в хранилище по клику на кнопку', () => {
-        const store = renderWithProviders(
+        const { store } = renderWithProviders(
             <Header />
         )
 
@@ -19,34 +19,34 @@ describe('Тесты для компонента Header', () => {
             userEvent.type(searchInput, 'test')
             userEvent.click(button)
         });
-        expect(store.store.getState().searchParams.searchFild).toBe('test')
+        expect(store.getState().searchParams.searchFild).toBe('test')
     })
 
     it('опции в селекторе должны отрисовываться', () => {
-        const store = renderWithProviders(
+        renderWithProviders(
             <Header />
         )
         expect(screen.queryAllByTestId('option').length).not.toBe(0)
     })
 
     it('опции в селекторе жанра при изменении должны менять состояние хранилища', () => {
-        const store = renderWithProviders(
+        const { store } = renderWithProviders(
             <Header />
         )
 
         const select = screen.getByTestId('select-Categories')
         fireEvent.change(select, { target: { value: 'art' } })
-        expect(store.store.getState().searchParams.category).toBe('art')
+        expect(store.getState().searchParams.category).toBe('art')
     })
 
     it('опции в селекторе сортировки при изменении должны менять состояние хранилища', () => {
-        const store = renderWithProviders(
+        const { store } = renderWithProviders(
             <Header />
         )
 
         const select = screen.getByTestId('select-Sorting by')
         fireEvent.change(select, { target: { value: 'newest' } })
-        expect(store.store.getState().searchParams.sortBy).toBe('newest')
+        expect(store.getState().searchParams.sortBy).toBe('newest')
     })
 
 

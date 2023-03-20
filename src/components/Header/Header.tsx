@@ -1,6 +1,7 @@
 import React, { useRef } from 'react';
 import { useDispatch } from 'react-redux';
 import styled from 'styled-components';
+import { booksApiSlice } from '../../redux/slices/books/booksApi';
 // import { useAppDispatch } from '../../hooks/hooks';
 import { setCategory, setSearchFild, setSortBy } from '../../redux/slices/searchParams/searchParamsSlice';
 import Button from '../Button/Button';
@@ -55,15 +56,18 @@ function Header(props: HeaderProps) {
     function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
         event.preventDefault()
         if (searchRef.current) {
+            dispatch(booksApiSlice.util.resetApiState())
             dispatch(setSearchFild(searchRef.current.value))
         }
     }
 
     function handleCategory(event: React.ChangeEvent<HTMLSelectElement>) {
+        dispatch(booksApiSlice.util.resetApiState())
         dispatch(setCategory(event.target.value))
     }
 
     function handleSortBy(event: React.ChangeEvent<HTMLSelectElement>) {
+        dispatch(booksApiSlice.util.resetApiState())
         dispatch(setSortBy(event.target.value))
     }
 
