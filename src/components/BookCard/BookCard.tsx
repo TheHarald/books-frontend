@@ -6,7 +6,7 @@ import Category from '../Category/Category';
 import Loader from '../Loader/Loader';
 
 type BookCardProps = {
-    categories: string[] | undefined;
+    categories?: string[];
     name: string;
     authors?: string[];
     imageURL: string;
@@ -75,7 +75,7 @@ function BookCard(props: BookCardProps) {
         navigate(`/books/${props.id}`)
     }
     return (
-        <StyledBookCard onClick={handleNavigate}>
+        <StyledBookCard data-testid='book-card' onClick={handleNavigate}>
             <StyledImage src={props.imageURL} alt={props.name}>
             </StyledImage>
             <StyledInfoContainer>

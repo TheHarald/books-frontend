@@ -1,7 +1,5 @@
 import React, { useRef } from 'react';
 import styled from 'styled-components';
-import { useAppDispatch } from '../../hooks/hooks';
-import { setSearchFild } from '../../redux/slices/searchParams/searchParamsSlice';
 
 
 type SearchBarProps = {
@@ -13,7 +11,7 @@ const StyledSearchBar = styled.input`
     flex-direction: row;
     align-items: center;
     padding: 12px 18px;
-    border: 1px solid var(--General60);
+    border: 1px solid #A1A7C4;
     border-radius: 6px;
     background: white;
 
@@ -42,7 +40,7 @@ const StyledSearchBar = styled.input`
 function SearchBar(props: SearchBarProps) {
 
     return (
-        <StyledSearchBar ref={props.inputRef} type='search' placeholder='Search books'>
+        <StyledSearchBar data-testid='search' ref={props.inputRef} type='search' placeholder='Search books'>
         </StyledSearchBar>
     );
 }

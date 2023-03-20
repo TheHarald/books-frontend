@@ -1,6 +1,7 @@
 import React, { useRef } from 'react';
+import { useDispatch } from 'react-redux';
 import styled from 'styled-components';
-import { useAppDispatch } from '../../hooks/hooks';
+// import { useAppDispatch } from '../../hooks/hooks';
 import { setCategory, setSearchFild, setSortBy } from '../../redux/slices/searchParams/searchParamsSlice';
 import Button from '../Button/Button';
 import SearchBar from '../SearchBar/SearchBar';
@@ -48,7 +49,7 @@ const StyledSelectContainer = styled.section`
 
 function Header(props: HeaderProps) {
 
-    const dispatch = useAppDispatch()
+    const dispatch = useDispatch()
     const searchRef = useRef<HTMLInputElement>(null)
 
     function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
@@ -68,7 +69,7 @@ function Header(props: HeaderProps) {
 
 
     return (
-        <StyledHeader>
+        <StyledHeader data-testid='header'>
             <StyledTitle>
                 Serch for Books
             </StyledTitle>

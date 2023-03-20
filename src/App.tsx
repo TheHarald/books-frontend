@@ -20,16 +20,14 @@ const StyledAppContainer = styled.div`
 function App() {
 
   return (
-    <BrowserRouter>
-      <StyledAppContainer>
-        <StyledApp>
-          <Routes>
-            <Route path='/' element={<MainPage />} />
-            <Route path='/books/:id' element={<BookPage />} />
-          </Routes>
-        </StyledApp>
-      </StyledAppContainer>
-    </BrowserRouter>
+    <StyledAppContainer>
+      <StyledApp>
+        <Routes>
+          <Route path='/' element={<MainPage />} />
+          <Route path='/books/:id' element={<BookPage />} />
+        </Routes>
+      </StyledApp>
+    </StyledAppContainer>
   );
 }
 

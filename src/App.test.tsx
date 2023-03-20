@@ -5,15 +5,13 @@ import { renderWithProviders } from './redux/utilsForTests';
 import { setupStore } from './redux';
 import { Provider } from 'react-redux';
 
-test('renders learn react link', () => {
+describe('Test App component', () => {
 
-  const sotre = setupStore()
-  // renderWithProviders(<App />)
-  render(
-    <Provider store={sotre}>
-      <App />
-    </Provider>
-  )
-  const linkElement = screen.getByText(/search/i);
-  expect(linkElement).toBeInTheDocument();
-});
+  it('заголовок должен отображаться в дприложении', () => {
+    const store = setupStore()
+    renderWithProviders(<App />)
+    const linkElement = screen.getByText(/search/i);
+    expect(linkElement).toBeInTheDocument();
+  });
+
+})

@@ -13,8 +13,11 @@ const StyledAuthorNames = styled.span`
 `
 
 function AuthorNames(props: AuthorNamesProps) {
+    if (!props.authors) {
+        return null
+    }
     return (
-        <StyledAuthorNames>
+        <StyledAuthorNames data-testid='AuthorNames'>
             {props.authors && props.authors.map((author) => {
                 return `${author}, `
             }).join('').slice(0, -2)}

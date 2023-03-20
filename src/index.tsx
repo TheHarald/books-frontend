@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { Provider } from 'react-redux';
+import { BrowserRouter } from 'react-router-dom';
 import { createGlobalStyle } from 'styled-components';
 import App from './App';
 import { setupStore } from './redux';
@@ -23,10 +24,6 @@ const GlobalStyles = createGlobalStyle`
   html{
     scroll-behavior: smooth;
   }
-
-  :root{
-    --General60:#A1A7C4;
-  }
 `
 
 const store = setupStore()
@@ -35,7 +32,9 @@ root.render(
   <>
     <GlobalStyles />
     <Provider store={store}>
-      <App />
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
     </Provider>
   </>
 );

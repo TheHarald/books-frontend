@@ -50,9 +50,9 @@ function Select(props: SelectProps) {
     return (
         <StyledLabel>
             {props.label}
-            <StyledSelect onChange={props.onChange}>
+            <StyledSelect data-testid={`select-${props.label}`} onChange={props.onChange}>
                 {props.options.map((item, index) => {
-                    return <StyledOption key={`${index}${item}`}>
+                    return <StyledOption data-testid='option' key={`${index}${item}`} value={item}>
                         {item}
                     </StyledOption>
                 })}

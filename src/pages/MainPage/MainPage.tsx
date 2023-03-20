@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components';
 import BookCard from '../../components/BookCard/BookCard';
 import Button from '../../components/Button/Button';
@@ -8,12 +8,10 @@ import Header from '../../components/Header/Header';
 import Loader from '../../components/Loader/Loader';
 import SkeletonCards from '../../components/Skeleton/SkeletonCards';
 import Title from '../../components/Title/Title';
-import { useAppSelector } from '../../hooks/hooks';
 import { useGetBooksQuery } from '../../redux/slices/books/booksApi';
 import { searchParamsSelector } from '../../redux/slices/searchParams/searchParamsSelectors';
 import { increaseStartIndex } from '../../redux/slices/searchParams/searchParamsSlice';
 import { BookRequestParams } from '../../types/api/booksApiRequest';
-import { BooksResponse } from '../../types/api/booksApiResponse';
 
 type MainPageProps = {};
 
@@ -37,7 +35,7 @@ const StyledBooksContainer = styled.section`
 
 function MainPage(props: MainPageProps) {
 
-    const requestParams: BookRequestParams = useAppSelector(searchParamsSelector)
+    const requestParams: BookRequestParams = useSelector(searchParamsSelector)
 
 
     const { data, isLoading, error } = useGetBooksQuery(requestParams)
@@ -64,12 +62,12 @@ function MainPage(props: MainPageProps) {
                             categories={book.volumeInfo.categories}
                             imageURL={book.volumeInfo.imageLinks ? book.volumeInfo.imageLinks.thumbnail : 'book.png'}
                         />
-                    }) : isLoading ? null : <Title text='Ничего не найдено' />
+                    }) : isLoading ? null : <Title text='Nothing found' />
                 }
                 {isLoading ? <Loader /> : null}
             </StyledBooksContainer>
-            {error ? <ErrorMessage text={'Ошибка'} /> : null}
-            <Button onClick={handleLoadMore} text='Загрузить ещё' />
+            {error ? <ErrorMessage text={'Error'} /> : null}
+            <Button onClick={handleLoadMore} text='Load more' />
         </StyledMainPage>
     );
 }
