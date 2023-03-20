@@ -27,9 +27,10 @@ const searchParamsSlice = createSlice({
         increaseStartIndex: (state) => {
             state.startIndex += state.maxResults
         },
+        resetSearchParams: () => initialState,
     }
 })
 
 
-export const { setCategory, setSortBy, setSearchFild, increaseStartIndex } = searchParamsSlice.actions
+export const { setCategory, setSortBy, setSearchFild, increaseStartIndex, resetSearchParams } = searchParamsSlice.actions
 export default searchParamsSlice.reducer
