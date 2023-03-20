@@ -36,10 +36,10 @@ const StyledLoader = styled.div`
 `;;
 
 function Loader(props: LoaderProps) {
-    return (
-        <StyledLoader>
-        </StyledLoader>
-    );
+  return (
+    <StyledLoader data-testid='loader'>
+    </StyledLoader>
+  );
 }
 
 export default Loader;

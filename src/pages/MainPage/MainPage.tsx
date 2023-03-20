@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components';
 import BookCard from '../../components/BookCard/BookCard';
@@ -43,6 +43,7 @@ function MainPage(props: MainPageProps) {
 
     function handleLoadMore() {
         dispatch(increaseStartIndex())
+        console.log('load');
     }
     return (
         <StyledMainPage>

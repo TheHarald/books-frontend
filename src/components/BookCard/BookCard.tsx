@@ -3,7 +3,6 @@ import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import AuthorNames from '../AuthorNames/AuthorNames';
 import Category from '../Category/Category';
-import Loader from '../Loader/Loader';
 
 type BookCardProps = {
     categories?: string[];

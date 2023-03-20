@@ -1,4 +1,5 @@
 import { configureStore } from "@reduxjs/toolkit";
+import { setupListeners } from "@reduxjs/toolkit/dist/query";
 import { combineReducers, PreloadedState } from "redux";
 import { booksApiSlice } from "./slices/books/booksApi";
 import searchParamsSlice from "./slices/searchParams/searchParamsSlice";
@@ -20,6 +21,8 @@ export const setupStore = (preloadedState?: PreloadedState<RootState>) => {
 
     return store
 }
+const store = setupStore()
+setupListeners(store.dispatch)
 
 export type RootState = ReturnType<typeof rootReducer>
 export type AppStore = ReturnType<typeof setupStore>

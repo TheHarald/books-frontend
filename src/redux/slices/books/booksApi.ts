@@ -6,7 +6,7 @@ import { Book, BooksResponse } from '../../../types/api/booksApiResponse'
 export const booksApiSlice = createApi({
     reducerPath: 'booksApi',
     baseQuery: fetchBaseQuery({
-        baseUrl: 'https://www.googleapis.com/books/v1/volumes'
+        baseUrl: process.env.REACT_APP_API_URL || 'https://www.googleapis.com/books/v1/volumes'
     }),
     endpoints: (builder) => ({
         getBookById: builder.query<Book, string>({

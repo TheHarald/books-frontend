@@ -1,6 +1,6 @@
 import React from 'react';
 import { Routes } from 'react-router';
-import { BrowserRouter, Route } from 'react-router-dom';
+import { Route } from 'react-router-dom';
 import styled from 'styled-components'
 import BookPage from './pages/BookPage/BookPage';
 import MainPage from './pages/MainPage/MainPage';

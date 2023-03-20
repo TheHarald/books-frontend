@@ -5,7 +5,7 @@ import MainPage from "./MainPage";
 import userEvent from "@testing-library/user-event"
 import { act } from "react-dom/test-utils";
 import { useGetBooksQuery } from "../../redux/slices/books/booksApi";
-import { books } from "./mockBooks";
+import { books } from "../../mock/mockBooks";
 
 
 describe('тесты для компоненты MainPage', () => {

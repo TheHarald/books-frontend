@@ -1,22 +1,10 @@
 import React from 'react';
-import { render, screen } from '@testing-library/react';
+import { getByText, queryByTestId, render, screen, waitFor } from '@testing-library/react';
 import App from './App';
 import { renderWithProviders } from './redux/utilsForTests';
-import { setupStore } from './redux';
-import { Provider } from 'react-redux';
-import { rest } from 'msw';
-import { setupServer } from 'msw/lib/node';
-import { books } from './pages/MainPage/mockBooks';
+import { server } from './mock/api/server';
+import userEvent from '@testing-library/user-event';
 
-
-export const handlers = [
-  rest.get(`${process.env.REACT_APP_API_URL}`, (req, res, ctx) => {
-
-    return res(ctx.json(books), ctx.delay(150))
-  })
-]
-
-const server = setupServer(...handlers)
 
 
 describe('Test App component', () => {
@@ -33,9 +21,29 @@ describe('Test App component', () => {
     expect(linkElement).toBeInTheDocument();
   });
 
-  it('запрос', () => {
+  it('запрос книг должен показывать лоадер и скрывать его когда запрос заончится и отобразить данные', async () => {
     const { store } = renderWithProviders(<App />)
-    console.log(store.getState().booksApi.queries);
+    expect(screen.queryByTestId('loader')).toBeInTheDocument()
+    await waitFor(() => {
+      expect(screen.queryByTestId('loader')).not.toBeInTheDocument()
+      expect(screen.queryAllByTestId('book-card')).not.toBe(0)
+    })
+  });
+
+
+  it('при нажатии на карточку осуществляется переход на страницу книги', async () => {
+    const { store } = renderWithProviders(<App />)
+    expect(screen.queryByTestId('loader')).toBeInTheDocument()
+    await waitFor(async () => {
+      expect(screen.queryByTestId('loader')).not.toBeInTheDocument()
+      expect(screen.queryAllByTestId('book-card').length).not.toBe(0)
+
+      userEvent.click(screen.queryAllByTestId('book-card')[0])
+      expect(window.location.pathname).toContain('/books/')
+
+      // screen.logTestingPlaygroundURL()
+
+    })
   });
 
 })
