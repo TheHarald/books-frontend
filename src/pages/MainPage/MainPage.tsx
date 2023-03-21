@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components';
 import BookCard from '../../components/BookCard/BookCard';
@@ -51,9 +51,9 @@ function MainPage(props: MainPageProps) {
             <StyledBooksContainer>
                 {isLoading && <SkeletonCards />}
                 {
-                    data?.items ? data.items.map((book) => {
+                    data?.items ? data.items.map((book, index) => {
                         return <BookCard
-                            key={book.id}
+                            key={`${book.id}_${index}`}
                             id={book.id}
                             name={book.volumeInfo.title}
                             authors={book.volumeInfo.authors}

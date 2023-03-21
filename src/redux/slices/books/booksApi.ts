@@ -13,10 +13,7 @@ export const booksApiSlice = createApi({
             query: (bookId) => `/${bookId}?key=${process.env.REACT_APP_API_KEY}`
         }),
         getBooks: builder.query<BooksResponse, BookRequestParams>({
-            query: ({ category, searchFild, sortBy, maxResults, startIndex }) => {
-                console.log(`?q=${searchFild}+${category}&orderBy=${sortBy}&maxResults=${maxResults}&startIndex=${startIndex}&key=${process.env.REACT_APP_API_KEY}`);
-                return `?q=${searchFild}+${category}&orderBy=${sortBy}&maxResults=${maxResults}&startIndex=${startIndex}&key=${process.env.REACT_APP_API_KEY}`
-            },
+            query: ({ category, searchFild, sortBy, maxResults, startIndex }) => `?q=${searchFild}+${category}&orderBy=${sortBy}&maxResults=${maxResults}&startIndex=${startIndex}&key=${process.env.REACT_APP_API_KEY}`,
             serializeQueryArgs: ({ endpointName }) => {
                 return endpointName
             },

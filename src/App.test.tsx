@@ -8,13 +8,6 @@ import userEvent from '@testing-library/user-event';
 
 
 describe('Test App component', () => {
-
-  beforeAll(() => server.listen())
-
-  afterEach(() => server.resetHandlers())
-
-  afterAll(() => server.close())
-
   it('заголовок должен отображаться в дприложении', () => {
     renderWithProviders(<App />)
     const linkElement = screen.getByText(/search/i);
@@ -37,12 +30,8 @@ describe('Test App component', () => {
     await waitFor(async () => {
       expect(screen.queryByTestId('loader')).not.toBeInTheDocument()
       expect(screen.queryAllByTestId('book-card').length).not.toBe(0)
-
       userEvent.click(screen.queryAllByTestId('book-card')[0])
       expect(window.location.pathname).toContain('/books/')
-
-      // screen.logTestingPlaygroundURL()
-
     })
   });
 

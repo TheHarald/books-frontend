@@ -2,12 +2,13 @@ import React, { useRef } from 'react';
 import { useDispatch } from 'react-redux';
 import styled from 'styled-components';
 import { booksApiSlice } from '../../redux/slices/books/booksApi';
-import { resetSearchParams, setCategory, setSearchFild, setSortBy } from '../../redux/slices/searchParams/searchParamsSlice';
+import { resetStartIndex, setCategory, setSearchFild, setSortBy } from '../../redux/slices/searchParams/searchParamsSlice';
 import Button from '../Button/Button';
 import SearchBar from '../SearchBar/SearchBar';
 import Select from '../Select/Select';
 
-type HeaderProps = {};
+type HeaderProps = {
+};
 
 const StyledHeader = styled.header`
     display: flex;
@@ -56,20 +57,20 @@ function Header(props: HeaderProps) {
         event.preventDefault()
         if (searchRef.current) {
             dispatch(booksApiSlice.util.resetApiState())
-            dispatch(resetSearchParams())
+            dispatch(resetStartIndex())
             dispatch(setSearchFild(searchRef.current.value))
         }
     }
 
     function handleCategory(event: React.ChangeEvent<HTMLSelectElement>) {
         dispatch(booksApiSlice.util.resetApiState())
-        dispatch(resetSearchParams())
+        dispatch(resetStartIndex())
         dispatch(setCategory(event.target.value))
     }
 
     function handleSortBy(event: React.ChangeEvent<HTMLSelectElement>) {
         dispatch(booksApiSlice.util.resetApiState())
-        dispatch(resetSearchParams())
+        dispatch(resetStartIndex())
         dispatch(setSortBy(event.target.value))
     }
 
